@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Um programa para reorganizar a sua rotina: escolher melhor, distribuir a carga e abrir espaço para uma vida mais leve.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projeto Anti-Caos · Do Caos ao Leve">
+<meta property="og:description" content="A coragem de construir uma vida mais leve em meio ao caos. 8 módulos, encontros ao vivo e comunidade, com Marina Rondon.">
+<meta property="og:image" content="https://marinarondon.github.io/anti-caos/img/marina-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/catavento.png">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Projeto Anti-Caos · Do Caos ao Leve</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Lato:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: página de vendas em uma coluna larga, faixas de fundo creme/branco/magenta alternadas; títulos em Montserrat 900 caixa-alta com a faixa laranja da marca por trás, como nos slides. Tema único (identidade da marca, sempre clara). */
+:root{
+  --creme:#F5EBDD; --papel:#FFFBF5; --bege:#E6D8C5;
+  --magenta:#CC0447; --magenta-esc:#A80339; --laranja:#E8631F; --amarelo:#F4B23A;
+  --tinta:#2E2A27; --queimado:#857866; --suave:#6F6259; --branco:#FFFFFF;
+  --f-titulo:"Montserrat","Arial Black",system-ui,sans-serif;
+  --f-texto:"Lato","Helvetica Neue",Arial,sans-serif;
+  --raio:14px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{overflow-x:clip;background:var(--creme);color:var(--tinta);font-family:var(--f-texto);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--magenta)}
+.faixa{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:clamp(56px,9vw,104px)}
+.faixa.papel{background:var(--papel)}
+.faixa.magenta{background:var(--magenta);color:var(--branco)}
+.miolo{max-width:1120px;margin-inline:auto}
+.estreito{max-width:760px;margin-inline:auto}
+
+/* Tipografia */
+h1,h2,h3{font-family:var(--f-titulo);text-wrap:balance;margin:0}
+h2{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.02;font-size:clamp(30px,5.2vw,56px);color:var(--magenta)}
+h2 .marca-texto{background:linear-gradient(90deg,rgba(232,99,31,.75),rgba(232,99,31,.12));background-size:100% .42em;background-repeat:no-repeat;background-position:0 78%;padding-inline:.06em}
+h3{font-weight:800;font-size:clamp(19px,2.2vw,22px);line-height:1.25}
+.olho{font-family:var(--f-titulo);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja);margin:0 0 14px}
+.lead{font-size:clamp(19px,2.2vw,22px);line-height:1.5;margin:20px 0 0;max-width:62ch}
+p{margin:0}
+.pilha{display:flex;flex-direction:column;gap:16px}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-titulo);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:15px;text-decoration:none;background:var(--magenta);color:var(--branco);padding:18px 30px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s ease,background .15s ease;box-shadow:0 8px 22px -10px rgba(204,4,71,.7)}
+.btn:hover{background:var(--magenta-esc);transform:translateY(-1px)}
+.btn:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--laranja);outline-offset:3px}
+.btn.claro{background:var(--branco);color:var(--magenta);box-shadow:none}
+.btn.claro:hover{background:var(--creme)}
+.cta-linha{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:32px}
+.selo-mini{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--suave)}
+.selo-mini b{color:var(--tinta)}
+
+/* Topo */
+.topo{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1120px;margin-inline:auto;padding-block:18px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--suave);font-size:15px}
+.logo img{width:36px;height:auto}
+.topo .btn{padding:12px 20px;font-size:13px}
+.topo-faixa{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px);align-items:center;max-width:1120px;margin-inline:auto;padding-block:clamp(20px,4vw,48px) clamp(56px,8vw,96px)}
+.hero h1{font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:-.035em;color:var(--magenta);font-size:clamp(52px,9.5vw,112px)}
+.hero h1 > span{display:block}
+.hero h1 .banda{display:inline;background:linear-gradient(90deg,rgba(232,99,31,.85),rgba(232,99,31,.10));background-size:100% .32em;background-repeat:no-repeat;background-position:0 82%;padding-right:.08em}
+.hero .tag{font-family:var(--f-titulo);font-weight:800;font-size:clamp(18px,2.3vw,24px);color:var(--laranja);text-transform:uppercase;letter-spacing:.02em;margin:0 0 18px}
+.hero .lead{margin-top:18px}
+.hero .slogan{margin-top:22px;font-size:clamp(22px,2.8vw,30px);line-height:1.25;color:var(--tinta);max-width:22ch}
+.para-quem{margin-top:14px;font-weight:700}
+.fichas{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;padding:0;list-style:none}
+.fichas li{font-size:14px;font-weight:700;background:var(--papel);border:1px solid var(--bege);padding:7px 13px;border-radius:999px}
+.foto-hero{position:relative;justify-self:center;width:min(100%,400px)}
+.foto-hero img{width:100%;aspect-ratio:348/560;object-fit:cover;object-position:50% 20%;border-radius:4px}
+.foto-hero::before{content:"";position:absolute;inset:auto -18px -18px 18px;height:56%;background:linear-gradient(160deg,rgba(232,99,31,.9),rgba(244,178,58,.35));z-index:-1;border-radius:4px}
+.foto-hero figcaption{position:absolute;left:-14px;bottom:28px;background:var(--branco);padding:12px 16px;border-radius:10px;font-size:14px;line-height:1.35;box-shadow:0 10px 30px -14px rgba(46,42,39,.45);max-width:220px}
+.foto-hero figcaption b{display:block;font-family:var(--f-titulo);font-weight:800;color:var(--magenta)}
+
+/* Mockup do produto */
+.produto{text-align:center}
+.produto h2{color:var(--magenta);font-size:clamp(28px,4.6vw,48px)}
+.produto .sistema-dcl{margin:16px auto 0;max-width:52ch}
+.produto .fita{display:inline-block;margin-top:16px;background:var(--magenta);color:var(--branco);font-family:var(--f-titulo);font-weight:800;font-size:clamp(15px,2.2vw,22px);padding:10px 22px;border-radius:4px;letter-spacing:.01em}
+.palco{container-type:inline-size;position:relative;max-width:980px;margin:40px auto 0;aspect-ratio:16/10.2;border-radius:18px;background:radial-gradient(120% 90% at 30% 0%,#FFF6EA 0%,var(--creme) 55%,#EBDCC6 100%);overflow:hidden}
+.palco::before{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(180deg,#E9D6BC,#DCC5A6)}
+.laptop{position:absolute;left:14%;top:7%;width:60%}
+.laptop .tela{background:#1f1d1c;border-radius:1.4cqw 1.4cqw 0 0;padding:1.1cqw 1.1cqw 1.6cqw;box-shadow:0 2cqw 4cqw -2cqw rgba(46,42,39,.5)}
+.laptop .tela img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:0 0;border-radius:.3cqw;background:var(--branco)}
+.laptop .base{height:1.6cqw;margin:0 -6%;background:linear-gradient(180deg,#d9d4ce,#a9a39c);border-radius:0 0 1.6cqw 1.6cqw;box-shadow:0 1.4cqw 2cqw -1cqw rgba(46,42,39,.45)}
+.celular{position:absolute;right:9%;top:12%;width:17%;aspect-ratio:9/18.5;background:#1f1d1c;border-radius:2.6cqw;padding:.9cqw;box-shadow:0 2cqw 3.5cqw -1.6cqw rgba(46,42,39,.55);transform:rotate(4deg)}
+.celular img{width:100%;height:100%;object-fit:cover;object-position:77% 50%;border-radius:1.8cqw}
+.apostila{position:absolute;bottom:3%;width:21%;aspect-ratio:827/1170;object-fit:cover;background:#FFFDF8;border-radius:.4cqw;box-shadow:0 1.6cqw 2.8cqw -1.2cqw rgba(46,42,39,.5)}
+.apostila .rot{font-family:var(--f-titulo);font-weight:800;font-size:1cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--laranja)}
+.apostila .tit{font-family:var(--f-titulo);font-weight:900;font-size:2.15cqw;line-height:1;text-transform:uppercase;letter-spacing:-.02em;color:var(--magenta)}
+.apostila .sub{font-size:1.15cqw;line-height:1.3;color:var(--suave)}
+.apostila svg{margin-top:auto;width:100%;height:auto}
+.apostila .marca{display:flex;align-items:center;gap:.5cqw;font-size:.95cqw;color:var(--suave)}
+.apostila .marca img{width:1.6cqw;height:auto}
+.ap1{left:7%;transform:rotate(-7deg)}
+.ap2{left:30%;bottom:2%;transform:rotate(-1.5deg)}
+.ap3{left:53%;transform:rotate(5deg)}
+.produto .legenda{margin-top:16px;font-size:14px;color:var(--suave)}
+
+/* Dor */
+.dor-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.lista-dor{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.lista-dor li{display:flex;gap:14px;align-items:flex-start;font-size:18px;background:var(--branco);padding:14px 18px;border-radius:10px}
+.lista-dor li::before{content:"";flex:0 0 10px;height:10px;margin-top:9px;border-radius:50%;background:var(--magenta)}
+.caos-sigla{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:28px;font-family:var(--f-titulo);font-weight:700;font-size:15px;color:var(--suave)}
+.caos-sigla b{color:var(--magenta);font-weight:900;font-size:22px;margin-right:2px}
+
+/* Verdades */
+.cansadas{font-family:var(--f-titulo);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;color:var(--laranja);font-size:clamp(20px,2.6vw,26px);line-height:1.1;margin-top:22px}
+.verdades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:36px;list-style:none;padding:0;counter-reset:v}
+.verdades li{background:var(--creme);border-radius:var(--raio);padding:22px 22px 24px;display:flex;flex-direction:column;gap:8px}
+.verdades strong{font-family:var(--f-titulo);font-weight:900;font-size:19px;line-height:1.2;color:var(--magenta)}
+.verdades span{font-size:16px;color:var(--suave)}
+.resumo-verdades{margin:36px auto 0;max-width:60ch;text-align:center;font-size:clamp(18px,2.1vw,21px);line-height:1.5;color:var(--tinta)}
+.escolher{margin-top:18px;text-align:center;font-family:var(--f-titulo);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(22px,3.4vw,36px);line-height:1.15;color:var(--queimado)}
+.escolher span{color:var(--laranja)}
+.muda{margin-top:40px}
+.muda h3{font-family:var(--f-titulo);font-weight:900;text-transform:uppercase;color:var(--magenta);font-size:clamp(20px,2.6vw,26px)}
+.muda ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.muda li{background:var(--branco);border:1px solid var(--bege);border-radius:999px;padding:9px 16px;font-size:16px;font-weight:700}
+.virada .sub{margin:16px auto 0;max-width:46ch;font-size:19px;color:var(--tinta)}
+@media (max-width:860px){.verdades{grid-template-columns:minmax(0,1fr)}}
+
+/* Antes e depois */
+.troca{margin-top:40px;border-radius:var(--raio);overflow:hidden;border:1px solid var(--bege);background:var(--branco)}
+.troca-cab,.troca-linha{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr)}
+.troca-cab div{font-family:var(--f-titulo);font-weight:900;text-transform:uppercase;letter-spacing:.04em;padding:18px 22px;font-size:clamp(18px,2.4vw,24px)}
+.troca-cab .c{background:var(--laranja);color:var(--branco)}
+.troca-cab .l{background:var(--magenta);color:var(--branco)}
+.troca-cab .s{background:linear-gradient(90deg,var(--laranja),var(--magenta))}
+.troca-linha{border-top:1px solid var(--bege)}
+.troca-linha div{padding:14px 22px;font-size:17px;min-width:0}
+.troca-linha .c{color:var(--suave);text-decoration:line-through;text-decoration-color:rgba(204,4,71,.45);text-decoration-thickness:1.5px}
+.troca-linha .s{display:flex;align-items:center;justify-content:center;color:var(--laranja);font-weight:900;padding:0}
+.troca-linha .l{font-weight:700}
+.virada{margin-top:48px;text-align:center}
+.virada p:first-child{font-size:20px;color:var(--suave)}
+.virada h2{margin-top:10px}
+
+/* Sistema + coragens */
+.sistema{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.coragens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.coragens li{background:var(--creme);border-radius:10px;padding:16px 18px;font-family:var(--f-titulo);font-weight:800;font-size:16px;line-height:1.25}
+.coragens li small{display:block;font-family:var(--f-texto);font-weight:400;font-size:14px;color:var(--suave);margin-top:4px}
+.leve-sigla{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 22px;margin-top:28px;font-family:var(--f-titulo);font-weight:700;font-size:17px;color:var(--queimado)}
+.leve-sigla b{font-weight:900;font-size:34px;line-height:1;color:var(--laranja);margin-right:1px}
+
+/* Formato */
+.tres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.cartao{background:var(--branco);border-radius:var(--raio);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.cartao .ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--creme);color:var(--magenta)}
+.cartao p{color:var(--suave);font-size:16px}
+.em-cada{margin-top:22px;background:var(--branco);color:var(--queimado);border:1.5px solid var(--laranja);border-radius:var(--raio);padding:22px 26px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center}
+.em-cada b{font-family:var(--f-titulo);font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:14px;color:var(--laranja)}
+.em-cada span{font-size:17px}
+
+/* Módulos */
+.modulos{margin-top:40px;display:flex;flex-direction:column;gap:10px}
+.modulo{background:var(--branco);border-radius:var(--raio);border:1px solid var(--bege)}
+.modulo summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;padding:18px 22px}
+.modulo summary::-webkit-details-marker{display:none}
+.modulo .n{font-family:var(--f-titulo);font-weight:900;font-size:28px;color:var(--laranja);font-variant-numeric:tabular-nums;width:2ch}
+.modulo .t{display:flex;flex-direction:column;min-width:0}
+.modulo .t strong{font-family:var(--f-titulo);font-weight:800;font-size:18px;line-height:1.25}
+.modulo .t em{font-style:italic;color:var(--suave);font-size:16px}
+.modulo .mais{width:30px;height:30px;border-radius:50%;background:var(--creme);display:grid;place-items:center;color:var(--magenta);font-weight:900;transition:transform .2s ease}
+.modulo[open] .mais{transform:rotate(45deg)}
+.modulo .corpo{padding:0 22px 22px calc(22px + 2ch + 18px);color:var(--tinta);font-size:17px;max-width:80ch}
+.ou-e{margin-top:24px;font-family:var(--f-titulo);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(20px,2.5vw,26px);line-height:1.15;color:var(--laranja)}
+.escolha-final{margin-top:28px;font-weight:700;font-size:clamp(18px,2.1vw,21px);line-height:1.45;color:var(--tinta)}
+.ritmo{margin-top:20px;font-size:16px;color:var(--suave)}
+
+/* Por dentro */
+.telas{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:22px;margin-top:40px;align-items:start}
+.navegador{background:var(--branco);border-radius:12px;box-shadow:0 24px 50px -28px rgba(46,42,39,.55);overflow:hidden;border:1px solid var(--bege)}
+.navegador .barra{display:flex;gap:6px;padding:10px 12px;background:var(--creme)}
+.navegador .barra i{width:10px;height:10px;border-radius:50%;background:var(--bege)}
+.navegador img{width:100%;height:auto}
+.navegador.desloca{margin-top:60px}
+.telas figcaption{font-size:14px;color:var(--suave);padding:10px 14px}
+
+/* Recebe */
+.recebe{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+.checks{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-size:18px}
+.checks li svg{flex:0 0 24px;margin-top:3px;color:var(--magenta)}
+.foto-sofa img{border-radius:6px;width:100%;aspect-ratio:581/453;object-fit:cover}
+
+/* Para quem */
+.duas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:40px}
+.coluna{border-radius:var(--raio);padding:28px 26px}
+.coluna.sim{background:var(--magenta);color:var(--branco)}
+.coluna.nao{background:var(--branco);border:1px solid var(--bege)}
+.coluna h3{text-transform:uppercase;letter-spacing:.02em;margin-bottom:16px}
+.coluna ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.coluna li{display:flex;gap:10px;font-size:17px}
+.coluna.sim li::before{content:"✓";font-weight:900;color:var(--amarelo)}
+.coluna.nao li::before{content:"×";font-weight:900;color:var(--magenta);font-size:20px;line-height:1.2}
+
+/* Marina */
+.autora{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,64px);align-items:center}
+.autora img{border-radius:6px;width:100%;aspect-ratio:939/738;object-fit:cover}
+.autora h2{font-size:clamp(40px,6.5vw,72px)}
+.autora .papel-sub{font-family:var(--f-titulo);font-weight:900;text-transform:uppercase;color:var(--laranja);font-size:clamp(20px,2.6vw,28px);letter-spacing:-.01em;margin-top:6px}
+.cv{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-direction:column;gap:6px;font-size:17px}
+.cv li{padding-left:18px;position:relative}
+.cv li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:2px;background:var(--laranja)}
+.citacao{margin-top:24px;font-style:italic;font-size:19px;border-left:3px solid var(--magenta);padding-left:16px}
+.metodo{margin-top:56px;padding-top:40px;border-top:1px solid var(--bege)}
+.principios{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:20px;list-style:none;padding:0}
+.principios li{background:var(--branco);border:1px solid var(--bege);border-radius:10px;padding:16px 10px;text-align:center;font-family:var(--f-titulo);font-weight:800;font-size:14px}
+.metodo p{color:var(--suave);font-size:16px;margin-top:14px}
+.metodo p.metodo-forte{color:var(--tinta);font-weight:700;font-size:clamp(18px,2.1vw,21px);margin-top:10px}
+
+/* Depoimentos */
+.depos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:36px}
+.depo{margin:0;background:var(--creme);border-radius:var(--raio);padding:26px 26px 22px;display:flex;flex-direction:column;gap:14px}
+.depo blockquote{margin:0;font-size:18px;line-height:1.55;color:var(--tinta)}
+.depo figcaption{font-family:var(--f-titulo);font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--laranja)}
+.depo-ouro{grid-column:1/-1;background:var(--magenta)}
+.depo-ouro blockquote{color:var(--branco);font-size:clamp(19px,2.3vw,23px);font-weight:700}
+.depo-ouro figcaption{color:var(--amarelo)}
+.depo-dado{margin-top:22px;font-size:16px;color:var(--suave);max-width:70ch}
+
+@media (max-width:860px){.depos{grid-template-columns:minmax(0,1fr)}}
+
+.bio-destaque{margin-top:20px;font-family:var(--f-titulo);font-weight:800;font-size:clamp(19px,2.2vw,22px);line-height:1.3;color:var(--magenta)}
+.bio{margin-top:12px;font-size:17px;max-width:60ch}
+
+.prova-cedo{margin-top:36px}
+.prova-cedo .depo-ouro{margin:0}
+.depos .depo:last-child:nth-child(odd){grid-column:1/-1}
+.depo:not(.depo-ouro){background:var(--branco)}
+
+.verbo{display:inline-block;vertical-align:middle;margin-left:6px;font-family:var(--f-titulo);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--laranja);background:var(--creme);padding:3px 8px;border-radius:999px;white-space:nowrap}
+
+/* Investimento */
+.oferta{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:22px;margin-top:40px;align-items:stretch}
+.preco{background:var(--branco);color:var(--tinta);border-radius:20px;padding:clamp(26px,4vw,40px)}
+.preco .olho{color:var(--magenta)}
+.valor{display:flex;flex-wrap:wrap;gap:6px 26px;align-items:baseline;margin-top:6px}
+.valor div{display:flex;align-items:baseline;gap:8px}
+.valor small{font-size:16px;color:var(--suave)}
+.valor strong{font-family:var(--f-titulo);font-weight:900;font-size:clamp(40px,6vw,60px);letter-spacing:-.03em;color:var(--magenta);font-variant-numeric:tabular-nums;line-height:1}
+.valor .ou{font-size:15px;color:var(--suave)}
+.avista{margin-top:10px;font-size:17px;font-weight:700}
+.avista small{font-weight:400;font-size:14px;color:var(--suave)}
+.inclui{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;font-size:16px}
+.inclui li::before{content:"✓ ";color:var(--magenta);font-weight:900}
+.cupom{margin-top:24px;background:var(--creme);border-radius:12px;padding:14px 18px;font-size:16px}
+.cupom b{color:var(--magenta)}
+.preco .btn{width:100%;margin-top:24px;font-size:16px;padding:20px}
+.falta-link{margin-top:10px;font-size:13px;color:var(--magenta);border:1px dashed var(--magenta);border-radius:8px;padding:8px 10px;text-align:center}
+.garantia{border-radius:20px;border:2px solid rgba(255,255,255,.5);padding:clamp(26px,4vw,40px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
+.selo{width:170px;height:170px;border-radius:50%;background:var(--branco);color:var(--magenta);display:grid;place-content:center;text-align:center;font-family:var(--f-titulo);box-shadow:0 0 0 8px rgba(255,255,255,.25)}
+.selo small{font-weight:800;letter-spacing:.14em;font-size:12px;text-transform:uppercase}
+.selo strong{font-weight:900;font-size:52px;line-height:.95;letter-spacing:-.03em}
+.selo span{font-weight:800;font-size:15px;text-transform:uppercase}
+.garantia p{font-size:17px;max-width:34ch}
+.faixa.magenta h2{color:var(--branco)}
+.faixa.magenta .marca-texto{background-image:linear-gradient(90deg,rgba(244,178,58,.9),rgba(244,178,58,.15))}
+.faixa.magenta .olho{color:var(--amarelo)}
+
+/* FAQ */
+.faq{margin-top:36px;display:flex;flex-direction:column;border-top:1px solid var(--bege)}
+.faq details{border-bottom:1px solid var(--bege)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:18px;align-items:center;padding:20px 4px;font-family:var(--f-titulo);font-weight:800;font-size:18px;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:0 0 auto;font-size:26px;color:var(--magenta);transition:transform .2s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .resp{padding:0 4px 22px;font-size:17px;color:var(--tinta);display:flex;flex-direction:column;gap:10px}
+
+/* Fecho */
+.fecho{text-align:center}
+.fecho h2{font-size:clamp(28px,4.6vw,50px);color:var(--magenta)}
+.fecho h2 em{font-style:normal;color:var(--laranja)}
+.fecho .cta-linha{justify-content:center}
+.assinatura{margin-top:28px;font-style:italic;color:var(--suave)}
+.rodape{text-align:center;font-size:14px;color:var(--suave);padding-block:28px 96px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-top:1px solid var(--bege);display:flex;flex-wrap:wrap;justify-content:center;gap:6px 24px}
+
+/* Barra fixa no celular */
+.barra-cta{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--papel);border-top:1px solid var(--bege);display:none;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));box-shadow:0 -10px 30px -18px rgba(46,42,39,.4);transform:translateY(110%);transition:transform .25s ease}
+.barra-cta.ver{transform:none}
+.barra-cta .p{font-size:14px;line-height:1.25}
+.barra-cta .p b{font-family:var(--f-titulo);font-weight:900;color:var(--magenta);font-size:16px}
+.barra-cta .btn{padding:13px 18px;font-size:13px;box-shadow:none}
+
+@media (max-width:860px){
+  .hero,.dor-grid,.sistema,.recebe,.autora,.oferta,.telas{grid-template-columns:minmax(0,1fr)}
+  .foto-hero{order:-1;width:min(78%,320px)}
+  .foto-hero figcaption{left:-8px}
+  .tres,.duas{grid-template-columns:minmax(0,1fr)}
+  .principios{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .navegador.desloca{margin-top:0}
+  .barra-cta{display:flex}
+  .autora img{order:-1}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .troca-cab,.troca-linha{grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr)}
+  .troca-cab div,.troca-linha div{padding-inline:12px}
+  .troca-linha div{font-size:15px}
+  .coragens,.inclui{grid-template-columns:minmax(0,1fr)}
+  .principios{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .modulo summary{gap:12px;padding:16px}
+  .modulo .corpo{padding:0 16px 18px 16px}
+  .topo .logo span{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="topo-faixa">
+  <header class="topo">
+    <a class="logo" href="#inicio"><img src="img/catavento.png" alt=""><span>arquitetura de vida</span></a>
+    <a class="btn cta" href="#investimento">Quero entrar</a>
+  </header>
+</div>
+
+<main id="inicio">
+  <!-- 1. Primeira dobra: o quê, para quem, como -->
+  <div class="topo-faixa">
+    <section class="hero">
+      <div>
+        <p class="tag">Projeto Anti-Caos</p>
+        <h1><span>Do <span class="banda">caos</span></span><span>ao <span class="banda">leve</span></span></h1>
+        <p class="slogan">A coragem de construir uma vida mais leve em meio ao caos.</p>
+        <p class="lead">Um programa para reorganizar a sua rotina: escolher melhor, distribuir a carga e abrir espaço para uma vida mais leve.</p>
+        <p class="para-quem">Para mulheres com múltiplos papéis.</p>
+        <ul class="fichas" aria-label="Formato do programa">
+          <li>8 módulos</li><li>4 meses</li><li>Aulas gravadas + encontros ao vivo</li><li>Comunidade no WhatsApp</li><li>Entrada imediata</li>
+        </ul>
+        <div class="cta-linha">
+          <a class="btn cta" href="#investimento">Quero entrar no Anti-Caos</a>
+          <span class="selo-mini">🛡 <span><b>Garantia de 15 dias</b> · 100% de volta</span></span>
+        </div>
+      </div>
+      <figure class="foto-hero">
+        <img src="img/marina-hero.jpg" alt="Marina Rondon sorrindo em casa">
+        <figcaption><b>Marina Rondon</b>arquiteta de vida, criadora do sistema Do Caos ao Leve</figcaption>
+      </figure>
+    </section>
+  </div>
+
+  <!-- 1b. O produto -->
+  <section class="faixa papel produto">
+    <div class="miolo">
+      <p class="olho">Projeto Anti-Caos</p>
+      <h2>Um caminho para construir uma rotina mais leve.</h2>
+      <p class="lead sistema-dcl">O sistema Do Caos ao Leve: planejamento e organização que integra gestão de tempo e energia na vida real de mulheres com múltiplos papéis.</p>
+      <span class="fita">8 módulos + ferramentas práticas + encontros ao vivo</span>
+      <div class="palco" role="img" aria-label="Área de membros do Anti-Caos no computador e no celular, com páginas do material do Módulo 05">
+        <div class="laptop"><div class="tela"><img src="img/anticaos-aula.jpg" alt=""></div><div class="base"></div></div>
+        <div class="celular"><img src="img/anticaos-area-de-membros.jpg" alt=""></div>
+        <img class="apostila ap1" src="img/m05-capa.jpg" alt="">
+        <img class="apostila ap2" src="img/m05-ferramenta.jpg" alt="">
+        <img class="apostila ap3" src="img/m05-desafio.jpg" alt="">
+      </div>
+      <p class="legenda">Área de membros no computador e no celular, e o material de cada módulo: ferramentas, desafio e conteúdo extra.</p>
+    </div>
+  </section>
+
+  <!-- 2. Dor -->
+  <section class="faixa">
+    <div class="miolo dor-grid">
+      <div>
+        <p class="olho">A vida do C.A.O.S.</p>
+        <h2>Fazemos demais. Descansamos de menos. <span class="marca-texto">E nos abandonamos</span> no caminho.</h2>
+        <p class="cansadas">Cansadas de estarem cansadas.</p>
+        <p class="lead">Eu já vivi isso. Talvez você esteja vivendo agora.</p>
+        <div class="caos-sigla" aria-label="C.A.O.S.">
+          <span><b>C</b>ansaço e controle</span><span><b>A</b>nsiedade</span><span><b>O</b>verload</span><span><b>S</b>tress e sobrecarga</span>
+        </div>
+      </div>
+      <ul class="lista-dor">
+        <li>A lista nunca acaba e tudo é urgente.</li>
+        <li>Você se encaixa no tempo que sobra.</li>
+        <li>"Ninguém faz como eu": faz tudo sozinha.</li>
+        <li>Quer ser perfeita em tudo.</li>
+        <li>Descansa só quando acabar (e nunca acaba).</li>
+        <li>Vive no automático, reagindo.</li>
+        <li>Os sonhos ficam para "quando eu finalmente…"</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2b. Verdades -->
+  <section class="faixa papel">
+    <div class="miolo">
+      <p class="olho">Verdades que precisei aceitar</p>
+      <h2>Para sair do caos, eu precisei <span class="marca-texto">aceitar seis verdades</span></h2>
+      <p class="lead">Simples e difíceis ao mesmo tempo.</p>
+      <ul class="verdades">
+        <li><strong>Sou finita.</strong><span>Sou um ser humano, com necessidades físicas, emocionais, mentais e sociais. Eu não cabia inteira na minha agenda.</span></li>
+        <li><strong>Os recursos são esgotáveis.</strong><span>Tempo, energia, foco e paciência são limitados. Esgotam-se.</span></li>
+        <li><strong>A lista nunca vai ter fim.</strong><span>A vida é como um cesto de roupa suja: quando termina a lavagem, já tem outro cesto à espera.</span></li>
+        <li><strong>A vida não vai acalmar.</strong><span>Ela muda de fase. A calma vem da mente que aprende a respirar dentro do caos.</span></li>
+        <li><strong>A perfeição é onde a vida não cabe.</strong><span>Quando eu quero tudo perfeito, paro de viver.</span></li>
+        <li><strong>Não fui feita para fazer sozinha.</strong><span>Esse peso todo nos meus ombros não é meu: é construído.</span></li>
+      </ul>
+      <p class="resumo-verdades">Se não admitimos as verdades, tentamos controlar o futuro e não escolhemos.</p>
+      <p class="escolher"><span>É preciso escolher.</span></p>
+    </div>
+  </section>
+
+  <!-- 3. Antes e depois -->
+  <section class="faixa">
+    <div class="miolo">
+      <p class="olho">Antes e depois</p>
+      <h2>Do C.A.O.S. ao <span class="marca-texto">L.E.V.E.</span></h2>
+      <div class="troca" role="table" aria-label="Antes e depois">
+        <div class="troca-cab" role="row"><div class="c" role="columnheader">C.A.O.S.</div><div class="s" aria-hidden="true"></div><div class="l" role="columnheader">L.E.V.E.</div></div>
+        <div class="troca-linha" role="row"><div class="c" role="cell">A lista nunca acaba e tudo é urgente</div><div class="s" aria-hidden="true">→</div><div class="l" role="cell">Eu escolho o essencial</div></div>
+        <div class="troca-linha" role="row"><div class="c" role="cell">Me encaixo no tempo que sobra</div><div class="s" aria-hidden="true">→</div><div class="l" role="cell">A agenda protege quem eu sou</div></div>
+        <div class="troca-linha" role="row"><div class="c" role="cell">"Ninguém faz como eu": faço tudo sozinha</div><div class="s" aria-hidden="true">→</div><div class="l" role="cell">Distribuo a carga e conto com a minha rede</div></div>
+        <div class="troca-linha" role="row"><div class="c" role="cell">Quero ser perfeita em tudo</div><div class="s" aria-hidden="true">→</div><div class="l" role="cell">Escolho onde ser incrível e onde ser mediana</div></div>
+        <div class="troca-linha" role="row"><div class="c" role="cell">Descanso só quando acabar</div><div class="s" aria-hidden="true">→</div><div class="l" role="cell">Descanso faz parte da estratégia</div></div>
+        <div class="troca-linha" role="row"><div class="c" role="cell">Vivo no automático, reagindo</div><div class="s" aria-hidden="true">→</div><div class="l" role="cell">Escolho com intenção</div></div>
+        <div class="troca-linha" role="row"><div class="c" role="cell">Sonhos para "quando eu finalmente…"</div><div class="s" aria-hidden="true">→</div><div class="l" role="cell">Espaço para o que me nutre, agora</div></div>
+      </div>
+      <div class="muda">
+        <h3>Na prática, você</h3>
+        <ul>
+          <li>Redescobre os seus papéis essenciais</li>
+          <li>Planeja tempo e energia</li>
+          <li>Cria uma rotina possível</li>
+          <li>Constrói uma produtividade do bem-estar</li>
+        </ul>
+      </div>
+      <div class="prova-cedo">
+        <figure class="depo depo-ouro"><blockquote>“Quero aproveitar o espaço e agradecer à Marina por proporcionar novos olhares, momentos de nós com nós mesmas, e nos fazer convites a reflexões que nos fazem melhores. E a todas, por estarem aqui e serem inspirações umas para as outras!”</blockquote><figcaption>Aluna do Anti-Caos · no grupo do WhatsApp</figcaption></figure>
+      </div>
+      <div class="virada">
+        <p>O problema não é você.</p>
+        <h2>Não é falta de disciplina. <span class="marca-texto">É falta de sistema.</span></h2>
+        <p class="sub">Um sistema para fazer o que importa, no tempo certo, com presença, em vez de tentar dar conta de tudo.</p>
+        <div class="cta-linha"><a class="btn cta" href="#investimento">Quero o meu sistema</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Formato -->
+  <section class="faixa papel">
+    <div class="miolo">
+      <p class="olho">Como funciona</p>
+      <h2>E se tudo fosse <span class="marca-texto">realmente mais leve?</span></h2>
+      <p class="lead">É toda a estrutura que construí nos últimos anos, agora sistematizada. Um programa completo para você aplicar o sistema Do Caos ao Leve na sua vida.</p>
+      <p class="lead"><b>Não é um curso de produtividade: é uma reorganização da sua rotina.</b></p>
+      <div class="tres">
+        <div class="cartao">
+          <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"/></svg></div>
+          <h3>Aulas gravadas</h3>
+          <p>Os 8 módulos em vídeo e em áudio. Você assiste ou ouve quando puder.</p>
+        </div>
+        <div class="cartao">
+          <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div>
+          <h3>Encontros ao vivo</h3>
+          <p>Para aprofundar, tirar dúvidas e trocar. Ficam gravados.</p>
+        </div>
+        <div class="cartao">
+          <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.2A8 8 0 1 1 21 12z"/></svg></div>
+          <h3>Comunidade no WhatsApp</h3>
+          <p>Ninguém precisa fazer sozinha. Um grupo com todas as alunas, para as trocas e os convites dos encontros. Novas alunas entram no início de cada mês.</p>
+        </div>
+      </div>
+      <div class="em-cada">
+        <b>Em cada módulo</b>
+        <span>Aula em vídeo e em áudio</span><span>Ferramentas práticas</span><span>Desafio</span><span>Conteúdo extra</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Módulos -->
+  <section class="faixa" id="modulos">
+    <div class="miolo estreito" style="max-width:860px">
+      <p class="olho">O caminho · 6 coragens</p>
+      <h2>Tudo começa e termina com <span class="marca-texto">coragem</span></h2>
+      <p class="lead">É preciso fazer algo novo para ter novos resultados. Um ato de coragem todos os dias. <b>No programa, passamos pelas 6 coragens para uma vida mais L.E.V.E.</b></p>
+      <div class="leve-sigla" aria-label="L.E.V.E.: Liberdade, Energia, Valores, Essencial"><span><b>L</b>iberdade</span><span><b>E</b>nergia</span><span><b>V</b>alores</span><span><b>E</b>ssencial</span></div>
+      <p class="lead">Oito módulos, um por vez. Toque em cada um para ver o que você faz e com o que sai.</p>
+      <div class="modulos">
+        <details class="modulo"><summary><span class="n">01</span><span class="t"><strong>Diagnóstico</strong><em>Antes de mudar, é preciso ver.</em></span><span class="mais" aria-hidden="true">+</span></summary>
+          <div class="corpo">Você reconhece qual dos 3 esgotamentos está vivendo, olha para as 6 verdades, faz o seu Índice de Leveza e passa 3 dias se observando no Desafio do Espelho, sem consertar nada. Sai com um retrato honesto de onde está, sem julgamento.</div></details>
+        <details class="modulo"><summary><span class="n">02</span><span class="t"><strong>Coragem de Viver Tudo <span class="verbo">eu me expando</span></strong><em>Sair da redução do "ou" e viver a expansão do "e".</em></span><span class="mais" aria-hidden="true">+</span></summary>
+          <div class="corpo">Com a Bússola de Valores, o Meu Por Quê e o seu Vision Board, você olha para quem é inteira, além dos seus papéis. Sai com um norte que vai segurar cada escolha das próximas coragens.</div></details>
+        <details class="modulo"><summary><span class="n">03</span><span class="t"><strong>Coragem de Ser Mediana <span class="verbo">eu aceito</span></strong><em>Incrível no que importa. Mediana no resto.</em></span><span class="mais" aria-hidden="true">+</span></summary>
+          <div class="corpo">A perfeição é onde a vida não cabe. Você desenha a sua Visão, mapeia os seus papéis e monta a sua Matriz da Excelência: onde ser incrível, onde ser mediana e onde fazer só o mínimo. Depois, define os seus inegociáveis. Sai com permissão para falhar sem culpa onde não importa.</div></details>
+        <details class="modulo"><summary><span class="n">04</span><span class="t"><strong>Coragem de Ser Dispensável <span class="verbo">eu solto o controle</span></strong><em>Quando me percebo substituível, sinto leveza.</em></span><span class="mais" aria-hidden="true">+</span></summary>
+          <div class="corpo">O mundo continua sem você, e isso é um alívio. Você desenha o Mapa da sua Rede de Apoio, faz o seu Mapa de Dispensabilidade e organiza as tarefas de rotina com quem divide a vida com você. Sai com espaço aberto na agenda e uma rede que você realmente usa.</div></details>
+        <details class="modulo"><summary><span class="n">05</span><span class="t"><strong>Coragem de Se Escolher <span class="verbo">eu me priorizo</span></strong><em>Primeiro eu, depois o mundo.</em></span><span class="mais" aria-hidden="true">+</span></summary>
+          <div class="corpo">Planejar é dar espaço pra você existir dentro da sua vida. Você junta tudo o que construiu até aqui e desenha a semana que te sustenta, começando por você. Sai com você dentro da própria agenda, e não no que sobra dela.</div></details>
+        <details class="modulo"><summary><span class="n">06</span><span class="t"><strong>Coragem de Fazer Menos <span class="verbo">eu escolho o essencial</span></strong><em>O quanto você faz é menos importante do que o que você faz.</em></span><span class="mais" aria-hidden="true">+</span></summary>
+          <div class="corpo">É preciso coragem de fazer menos para sermos mais. Você escolhe o que não vai fazer mais, destralha a vida para abrir espaço, organiza as suas listas e aprende a perguntar: isso é leve ou pesado? Sai com uma lista que cabe na vida real.</div></details>
+        <details class="modulo"><summary><span class="n">07</span><span class="t"><strong>Coragem de Descansar <span class="verbo">eu descanso</span></strong><em>Parar antes que a vida te pare.</em></span><span class="mais" aria-hidden="true">+</span></summary>
+          <div class="corpo">Descansar não é prêmio nem perda de tempo: é fluxo. Você descobre quais dos 7 tipos de descanso estão faltando, cuida da sua energia e respeita os seus ciclos. Sai com o descanso na agenda como compromisso, mesmo com a lista cheia.</div></details>
+        <details class="modulo"><summary><span class="n">08</span><span class="t"><strong>L.E.V.E. · Sustentação</strong><em>Eu reorganizo minha vida para sustentar escolhas.</em></span><span class="mais" aria-hidden="true">+</span></summary>
+          <div class="corpo">Um olhar geral e integrado para o seu Plano L.E.V.E., para sustentar a vida mais leve que você construiu ao longo das coragens.<br><b>Eu me expando · eu me priorizo · eu solto o controle · eu aceito · eu escolho o essencial · eu descanso.</b></div></details>
+      </div>
+      <p class="ritmo">Você faz no seu tempo. A minha recomendação é viver cada módulo por 15 dias, colocando em prática antes de seguir. Assim, o programa todo leva cerca de quatro meses.</p>
+      <p class="escolha-final">Escolher é inevitável: quando não escolhemos, alguém escolhe por nós. É a sua vida: faça dela a sua escolha.</p>
+    </div>
+  </section>
+
+  <!-- 8. O que recebe -->
+  <section class="faixa papel">
+    <div class="miolo recebe">
+      <div>
+        <p class="olho">Ao final</p>
+        <h2>O que você <span class="marca-texto">recebe</span></h2>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Aulas gravadas dos 8 módulos, em vídeo e em áudio</li>
+          <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Ferramentas práticas em cada módulo: guias, mapas, modelos de agenda e de listas, planilha e Notion</li>
+          <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Encontros ao vivo ao longo do ano, gravados</li>
+          <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Comunidade no WhatsApp com todas as alunas</li>
+          <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>O seu Plano L.E.V.E.</li>
+          <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Acesso por 12 meses</li>
+        </ul>
+        <div class="cta-linha"><a class="btn cta" href="#investimento">Comece hoje</a></div>
+      </div>
+      <div class="foto-sofa"><img src="img/marina-sofa.jpg" alt="Marina Rondon sentada no sofá, sorrindo" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- 9. Para quem é -->
+  <section class="faixa">
+    <div class="miolo">
+      <p class="olho">Seja honesta com você</p>
+      <h2>Para quem é <span class="marca-texto">(e para quem não é)</span></h2>
+      <div class="duas">
+        <div class="coluna sim">
+          <h3>É para você se</h3>
+          <ul>
+            <li>Vive múltiplos papéis: mãe, profissional, parceira, filha</li>
+            <li>Sente que a lista virou a sua vida</li>
+            <li>Descansa com culpa</li>
+            <li>Está pronta para agir</li>
+          </ul>
+        </div>
+        <div class="coluna nao">
+          <h3>Não é para você se</h3>
+          <ul>
+            <li>Busca fórmula mágica ou milagre sem processo</li>
+            <li>Acredita que informação sozinha traz mudança</li>
+            <li>Prefere continuar fazendo tudo sozinha</li>
+            <li>Aceita que a sua saúde e os seus sonhos fiquem para depois</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Marina -->
+  <section class="faixa papel">
+    <div class="miolo">
+      <div class="autora">
+        <div>
+          <p class="olho">Quem conduz</p>
+          <h2>Marina Rondon</h2>
+          <p class="papel-sub">Arquiteta de vida</p>
+          <p class="bio-destaque">Há 4 anos, ajudo mulheres a terem coragem de viver uma vida alinhada com quem são e de cuidarem mais de si.</p>
+          <p class="bio">Depois da maternidade e aos 40 anos, mudei de país e redesenhei a minha vida, mais alinhada com quem eu queria ser e com os meus valores. Uni a arquitetura, a saúde integral e o comportamento humano. Assim nasceu a Arquitetura de Vida. E o Anti-Caos é o sistema que eu construí para sair do meu próprio caos.</p>
+          <ul class="cv">
+            <li>Arquiteta, com 20 anos no corporativo em liderança</li>
+            <li>Integrative Health Coach pelo IIN (Nova York) e Health Coach pela Nós Escola (BR/PT)</li>
+            <li>Especialista em Inteligência Emocional e Gestão da Mudança · pós-graduanda em Neurociência e Comportamento</li>
+            <li>Fundadora da Arquitetura de Vida e criadora do Método Rondon e do sistema Do Caos ao Leve</li>
+            <li>Mãe e maratonista</li>
+          </ul>
+        </div>
+        <img src="img/marina-escritorio.jpg" alt="Marina Rondon no escritório, em frente ao quadro de medalhas de corrida" loading="lazy">
+      </div>
+      <div class="metodo">
+        <p class="olho">Método Rondon · 6 princípios</p>
+        <ul class="principios">
+          <li>Autoconhecimento</li><li>Autocuidado</li><li>Autorresponsabilidade</li><li>Priorização</li><li>Simplicidade</li><li>Mentalidade</li>
+        </ul>
+        <p>O que sustenta o Do Caos ao Leve e todos os projetos da Arquitetura de Vida.</p>
+        <p class="metodo-forte">Você não sai do Anti-Caos só com organização: você sai com um jeito novo de escolher e de cuidar mais de você.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10b. Depoimentos -->
+  <section class="faixa">
+    <div class="miolo">
+      <p class="olho">Quem já viveu</p>
+      <h2>O que dizem as mulheres que <span class="marca-texto">já caminharam comigo</span></h2>
+      <div class="depos">
+        <figure class="depo"><blockquote>“Minha vida já está mais leve desde que te conheci.”</blockquote><figcaption>Aluna do Anti-Caos</figcaption></figure>
+        <figure class="depo"><blockquote>“Agradecer por você sempre nos convidar a viver. A estarmos vivas, leves e felizes pra nós e para os nossos.”</blockquote><figcaption>Aluna do Anti-Caos</figcaption></figure>
+        <figure class="depo"><blockquote>“Fiquei feliz com o resultado, principalmente com a leveza interna de poder acrescentar coisas novas e mudar a prioridade. Estou sendo leve nisso também, me cobrando menos. Acho que já estou sendo mediana sem o foco de ser!”</blockquote><figcaption>Aluna do Anti-Caos</figcaption></figure>
+        <figure class="depo"><blockquote>“Ajuda a entender o caos que vivemos e que existem formas de sair dele e ter uma vida mais leve e saudável.”</blockquote><figcaption>Mentorada Do Caos ao Leve</figcaption></figure>
+        <figure class="depo"><blockquote>“Me ajudou a entender que, estando bem comigo, estarei bem com a minha família e com todos à minha volta. Que cuidar de mim é primordial antes de qualquer coisa.”</blockquote><figcaption>Mentorada Do Caos ao Leve</figcaption></figure>
+      </div>
+      <p class="depo-dado">Nas avaliações, alunas e mentoradas contam que saem com mais clareza do que é essencial, e todas indicariam a experiência para outra mulher.</p>
+    </div>
+  </section>
+
+  <!-- 11. Investimento -->
+  <section class="faixa magenta" id="investimento">
+    <div class="miolo">
+      <p class="olho">Investimento</p>
+      <h2>Eu quero <span class="marca-texto">o Anti-Caos</span></h2>
+      <div class="oferta">
+        <div class="preco">
+          <p class="olho">Projeto Anti-Caos · entrada imediata</p>
+          <div class="valor">
+            <div><small>12x de</small><strong>R$ 88,94</strong></div>
+          </div>
+          <p class="avista">ou R$ 860 à vista<br><small>Fora do Brasil, o checkout da Hotmart converte o valor para a sua moeda.</small></p>
+          <ul class="inclui">
+            <li>8 módulos gravados</li><li>Ferramentas e PDFs</li><li>Encontros ao vivo</li><li>Comunidade no WhatsApp</li><li>Plano L.E.V.E.</li><li>Acesso por 12 meses</li>
+          </ul>
+          <a class="btn" id="btn-checkout" href="#investimento">Quero entrar agora</a>
+          <p class="falta-link" id="aviso-checkout">Rascunho: falta colar o link do checkout da Hotmart.</p>
+        </div>
+        <div class="garantia">
+          <div class="selo"><small>Garantia</small><strong>15</strong><span>dias</span></div>
+          <p><b>Entre sem medo.</b> Se em 15 dias você sentir que não é para você, devolvo 100% do valor direto pela Hotmart, sem precisar justificar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. FAQ -->
+  <section class="faixa">
+    <div class="miolo estreito">
+      <p class="olho">Perguntas frequentes</p>
+      <h2>Ficou <span class="marca-texto">alguma dúvida?</span></h2>
+      <div class="faq">
+        <details><summary>Como recebo o acesso?</summary><div class="resp"><p>Assim que a compra é confirmada, você recebe um e-mail da Hotmart com o acesso à área de membros e já pode começar.</p><p>No início de cada mês, as novas alunas entram juntas no grupo do WhatsApp, para acompanhar as trocas e receber os convites dos encontros ao vivo.</p></div></details>
+        <details><summary>Quando posso começar e quanto tempo dura?</summary><div class="resp"><p>Você começa assim que se inscreve e faz no seu tempo. A minha recomendação é um módulo a cada 15 dias: assim, os 8 módulos levam cerca de quatro meses.</p></div></details>
+        <details><summary>As aulas ficam gravadas? Por quanto tempo tenho acesso?</summary><div class="resp"><p>Sim. Aulas, materiais e as gravações dos encontros ficam na área de membros, e você tem acesso por 12 meses a partir da compra.</p></div></details>
+        <details><summary>Como funciona o pagamento?</summary><div class="resp"><p>Em até 12x de R$ 88,94, ou R$ 860 à vista. O pagamento é pela Hotmart: fora do Brasil, o checkout converte o valor para a sua moeda e mostra as formas de pagamento do seu país.</p></div></details>
+        <details><summary>E se eu não conseguir acompanhar no ritmo?</summary><div class="resp"><p>O programa foi pensado para a vida real. Os 15 dias por módulo são uma recomendação, não uma regra: tudo fica gravado e você retoma de onde parou, sem culpa.</p><p>Ser mediana também vale aqui.</p></div></details>
+        <details><summary>Como funcionam os encontros ao vivo?</summary><div class="resp"><p>Acontecem ao longo do ano, pelo Google Meet, abertos a todas as alunas, em qualquer módulo que estejam. Os convites chegam pelo grupo do WhatsApp. Trazemos o tema da vez, dúvidas e trocas. Os encontros ficam gravados, e o grupo no WhatsApp segue ativo entre um e outro.</p></div></details>
+        <details><summary>E se não fizer sentido para mim?</summary><div class="resp"><p>Você tem 15 dias de garantia. Se não fizer sentido, pede o reembolso direto na Hotmart e recebe 100% do valor, sem precisar justificar.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Fecho -->
+  <section class="faixa papel">
+    <div class="miolo estreito fecho">
+      <h2>A coragem de construir uma vida mais <em class="leve">l.e.v.e.</em> em meio ao <em>c.a.o.s.</em></h2>
+            <p class="lead" style="margin-inline:auto"><b>Qual é a única coisa que você pode fazer hoje que tornaria todo o resto mais leve?</b></p>
+      <div class="cta-linha"><a class="btn" href="https://pay.hotmart.com/A106809031N?off=shngtxer" target="_blank" rel="noopener">Entrar no Anti-Caos</a></div>
+      <p class="assinatura">Vamos juntas construir o leve em meio ao caos!<br>Marina Rondon</p>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape"><span>@marinarondon</span><span>arquiteturadevida.com</span><span>Projeto Anti-Caos · Do Caos ao Leve</span></footer>
+
+<div class="barra-cta" id="barra-cta" aria-hidden="true">
+  <span class="p"><b>12x de R$ 88,94</b><br>Garantia de 15 dias</span>
+  <a class="btn cta" href="#investimento" tabindex="-1">Quero entrar</a>
+</div>
+
+<script>
+// Cole aqui o link do checkout da Hotmart. Com ele preenchido, todos os botões vão direto para a compra.
+const CHECKOUT = "https://pay.hotmart.com/A106809031N?off=shngtxer";
+
+(function(){
+  const btn = document.getElementById('btn-checkout');
+  const aviso = document.getElementById('aviso-checkout');
+  if (CHECKOUT) {
+    btn.href = CHECKOUT; btn.target = "_blank"; btn.rel = "noopener";
+    aviso.hidden = true;
+  }
+  // Barra fixa no celular: aparece depois da primeira dobra e some na seção de investimento
+  const barra = document.getElementById('barra-cta');
+  const hero = document.querySelector('.hero');
+  const inv = document.getElementById('investimento');
+  let passouHero = false, naOferta = false;
+  const atualiza = () => barra.classList.toggle('ver', passouHero && !naOferta);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(e => { passouHero = !e[0].isIntersecting; atualiza(); }).observe(hero);
+    new IntersectionObserver(e => { naOferta = e[0].isIntersecting; atualiza(); }).observe(inv);
+  }
+})();
+</script>
+
+</body>
+</html>
