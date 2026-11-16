@@ -257,6 +257,7 @@ p{margin:0}
 .avista small{font-weight:400;font-size:14px;color:var(--suave)}
 .inclui{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;font-size:16px}
 .inclui li::before{content:"✓ ";color:var(--magenta);font-weight:900}
+.inclui li.bonus{grid-column:1/-1}
 .cupom{margin-top:24px;background:var(--creme);border-radius:12px;padding:14px 18px;font-size:16px}
 .cupom b{color:var(--magenta)}
 .preco .btn{width:100%;margin-top:24px;font-size:16px;padding:20px}
@@ -446,7 +447,7 @@ p{margin:0}
         </ul>
       </div>
       <div class="prova-cedo">
-        <figure class="depo depo-ouro"><blockquote>“Quero aproveitar o espaço e agradecer à Marina por proporcionar novos olhares, momentos de nós com nós mesmas, e nos fazer convites a reflexões que nos fazem melhores. E a todas, por estarem aqui e serem inspirações umas para as outras!”</blockquote><figcaption>Aluna do Anti-Caos · no grupo do WhatsApp</figcaption></figure>
+        <figure class="depo depo-ouro"><blockquote>“O projeto Anti-Caos veio como um apoio crucial na minha vida! Sou mãe solo vivendo em outro país, sem rede de apoio. O programa traz muitas ferramentas e reflexões que de fato me ajudam, porque não adianta só a reflexão sem a ferramenta, e nem a ferramenta sem a reflexão do que eu vou escolher e por quê. A Marina alia nesse programa a praticidade com verdades duras, mas importantes de escutar. A lista não tem fim, temos que escolher onde queremos ser medianas, que pratinho eu vou deixar cair agora… Existe o avanço, e isso pra mim é o mais importante!”</blockquote><figcaption>Aluna do Anti-Caos</figcaption></figure>
       </div>
       <div class="virada">
         <p>O problema não é você.</p>
@@ -532,6 +533,7 @@ p{margin:0}
           <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Comunidade no WhatsApp com todas as alunas</li>
           <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>O seu Plano L.E.V.E.</li>
           <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Acesso por 12 meses</li>
+          <li><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Bônus:</b> acesso a todo o conteúdo do meu Substack</span></li>
         </ul>
         <div class="cta-linha"><a class="btn cta" href="#investimento">Comece hoje</a></div>
       </div>
@@ -604,8 +606,8 @@ p{margin:0}
       <p class="olho">Quem já viveu</p>
       <h2>O que dizem as mulheres que <span class="marca-texto">já caminharam comigo</span></h2>
       <div class="depos">
-        <figure class="depo"><blockquote>“Minha vida já está mais leve desde que te conheci.”</blockquote><figcaption>Aluna do Anti-Caos</figcaption></figure>
-        <figure class="depo"><blockquote>“Agradecer por você sempre nos convidar a viver. A estarmos vivas, leves e felizes pra nós e para os nossos.”</blockquote><figcaption>Aluna do Anti-Caos</figcaption></figure>
+        <figure class="depo"><blockquote>“Adoro como tudo é tão prático. Se baseia num corpo teórico sério e, ainda assim, parece fácil, acessível e diretamente aplicável no dia a dia. Me permitiu tomar controle da minha agenda. E o mais importante: termino cada sessão com muita energia positiva, com leveza e força ao mesmo tempo.”</blockquote><figcaption>Aluna do Anti-Caos</figcaption></figure>
+        <figure class="depo"><blockquote>“Quero aproveitar o espaço e agradecer à Marina por proporcionar novos olhares, momentos de nós com nós mesmas, e nos fazer convites a reflexões que nos fazem melhores. E a todas, por estarem aqui e serem inspirações umas para as outras!”</blockquote><figcaption>Aluna do Anti-Caos · no grupo do WhatsApp</figcaption></figure>
         <figure class="depo"><blockquote>“Fiquei feliz com o resultado, principalmente com a leveza interna de poder acrescentar coisas novas e mudar a prioridade. Estou sendo leve nisso também, me cobrando menos. Acho que já estou sendo mediana sem o foco de ser!”</blockquote><figcaption>Aluna do Anti-Caos</figcaption></figure>
         <figure class="depo"><blockquote>“Ajuda a entender o caos que vivemos e que existem formas de sair dele e ter uma vida mais leve e saudável.”</blockquote><figcaption>Mentorada Do Caos ao Leve</figcaption></figure>
         <figure class="depo"><blockquote>“Me ajudou a entender que, estando bem comigo, estarei bem com a minha família e com todos à minha volta. Que cuidar de mim é primordial antes de qualquer coisa.”</blockquote><figcaption>Mentorada Do Caos ao Leve</figcaption></figure>
@@ -621,13 +623,13 @@ p{margin:0}
       <h2>Eu quero <span class="marca-texto">o Anti-Caos</span></h2>
       <div class="oferta">
         <div class="preco">
-          <p class="olho">Projeto Anti-Caos · entrada imediata</p>
+          <p class="olho">Valor de 2026 · entrada imediata</p>
           <div class="valor">
             <div><small>12x de</small><strong>R$ 88,94</strong></div>
           </div>
           <p class="avista">ou R$ 860 à vista<br><small>Fora do Brasil, o checkout da Hotmart converte o valor para a sua moeda.</small></p>
           <ul class="inclui">
-            <li>8 módulos gravados</li><li>Ferramentas e PDFs</li><li>Encontros ao vivo</li><li>Comunidade no WhatsApp</li><li>Plano L.E.V.E.</li><li>Acesso por 12 meses</li>
+            <li>8 módulos gravados</li><li>Ferramentas e PDFs</li><li>Encontros ao vivo</li><li>Comunidade no WhatsApp</li><li>Plano L.E.V.E.</li><li>Acesso por 12 meses</li><li class="bonus"><b>Bônus:</b> todo o conteúdo do Substack</li>
           </ul>
           <a class="btn" id="btn-checkout" href="#investimento">Quero entrar agora</a>
           <p class="falta-link" id="aviso-checkout">Rascunho: falta colar o link do checkout da Hotmart.</p>
